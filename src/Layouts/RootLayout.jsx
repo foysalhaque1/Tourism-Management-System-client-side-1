@@ -8,14 +8,17 @@ import 'react-toastify/dist/ReactToastify.css';
 const RootLayout = () => {
     return (
         <div >
-            <div className='max-w-[1280px] mx-auto'>
+            <div className='max-w-full mx-auto'>
 
-            <Navbar></Navbar>
-            <Outlet></Outlet>
+                <Navbar></Navbar>
+                <div className='pt-24 max-w-[1280px] mx-auto'>
+
+                    <Outlet></Outlet>
+                </div>
             </div>
             <Footer></Footer>
             <ToastContainer position="top-right" autoClose={3000} />
-            
+
         </div>
     );
 };

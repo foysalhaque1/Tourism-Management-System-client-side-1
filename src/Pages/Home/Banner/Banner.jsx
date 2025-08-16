@@ -13,7 +13,7 @@ const Banner = () => {
             showStatus={false}
             interval={4000}
             dynamicHeight={false}
-            className="rounded-xl overflow-hidden" autoPlay={true} infiniteLoop={true} showThumbs={false}>
+            className="rounded-xl max-w-[1280px] mx-auto overflow-hidden" autoPlay={true} infiniteLoop={true} showThumbs={false}>
             <div>
                 <img className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] object-cover" src={banner1} />
 

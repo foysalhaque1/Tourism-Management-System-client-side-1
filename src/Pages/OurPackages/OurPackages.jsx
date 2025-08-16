@@ -22,7 +22,7 @@ const OurPackages = () => {
     const randomPackages = shuffled.slice(0, 3);
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 ">
             {randomPackages.map((pkg, index) => (
                 <div key={index} className="card w-full bg-base-100 shadow-xl">
                     {/* Display first image from links */}
@@ -40,6 +40,7 @@ const OurPackages = () => {
                     <div className="card-body">
                         <h2 className="card-title capitalize">{pkg.tourType}</h2>
                         <p className="text-lg font-semibold text-primary">${pkg.price}</p>
+                        <p className="text-lg font-semibold text-primary">{pkg.info?.length > 100 ? `${pkg.info.substring(0, 50)}...` : pkg.info}</p>
                         <div className="card-actions justify-end">
                             <button
                                 className="btn btn-outline btn-primary"

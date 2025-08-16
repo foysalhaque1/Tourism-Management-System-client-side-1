@@ -70,7 +70,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/trips',
-        element: <AllTripsPage></AllTripsPage>
+        element: <PrivateRoute>
+          <AllTripsPage></AllTripsPage>
+        </PrivateRoute>
       },
       {
         path: '/aboutUs',
@@ -119,7 +121,9 @@ export const router = createBrowserRouter([
 
       {
         path: 'joinAsTourGuide',
-        element: <UserJoinAsTourGuide></UserJoinAsTourGuide>
+        element: <PrivateRoute>
+          <UserJoinAsTourGuide></UserJoinAsTourGuide>
+        </PrivateRoute>
       },
       {
         path: 'addPackage',

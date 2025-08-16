@@ -35,14 +35,21 @@ const Navbar = () => {
             <NavLink className={'mr-4 font-bold text-xl'} to={'/aboutUs'}>
                 About Us
             </NavLink>
-            <NavLink className={'mr-4 font-bold text-xl'} to={'/trips'}>
+           {
+            user &&  <NavLink className={'mr-4 font-bold text-xl'} to={'/trips'}>
                 Trips
             </NavLink>
+           }
+           {
+            user && <NavLink className={'mr-4 font-bold text-xl'} to={'/trips'}>
+                Join As Tour Guide
+            </NavLink>
+           }
         </>
     );
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar fixed top-0 left-0 w-full z-50 shadow-sm bg-secondary  p-2.5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

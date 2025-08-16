@@ -7,6 +7,9 @@ import HeroSection1 from '../../OtherSection1/OtherSection1';
 import WhyTravelWithUs from '../../OtherSection2/OtherSection2';
 import TabSection from '../../TabSection/TabSection';
 import OverviewSection from '../../OverViewSection/OverViewSection';
+import TouristTestimonials from '../../Testimonial/Testimonial';
+import Faq from '../../FaqSection/Faq';
+import Offer from '../../OfferSection/Offer';
 
 const Home = () => {
     return (
@@ -20,8 +23,12 @@ const Home = () => {
                 <TabSection></TabSection>
                
                 <TouristStorySection></TouristStorySection>
-                <HeroSection1></HeroSection1>
+                
                 <WhyTravelWithUs></WhyTravelWithUs>
+                <Offer></Offer>
+                <TouristTestimonials></TouristTestimonials>
+                <Faq></Faq>
+                <HeroSection1></HeroSection1>
             </div>
         </div>
     );
