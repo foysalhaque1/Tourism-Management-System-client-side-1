@@ -41,7 +41,7 @@ const Navbar = () => {
             </NavLink>
            }
            {
-            user && <NavLink className={'mr-4 font-bold text-xl'} to={'/trips'}>
+            user && <NavLink className={'mr-4 font-bold text-xl'} to={'/dashboard/joinAsTourGuide'}>
                 Join As Tour Guide
             </NavLink>
            }
