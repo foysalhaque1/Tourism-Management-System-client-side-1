@@ -32,6 +32,7 @@ import AllTripsPage from "../Pages/AllTripsPage/AllTripsPage";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import UserAddStories from "../Pages/UserAddStories/UserAddStories";
 import StatsDashboard from "../Pages/OverviewPage/OverviewPage";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
         path: 'payment/:id',
         element: <Payment></Payment>
       },
-      
+
       {
         path: 'allStories',
         element: <AllStories></AllStories>
@@ -115,11 +116,11 @@ export const router = createBrowserRouter([
         element: <UserManageStories></UserManageStories>,
 
       },
-       {
+      {
         path: 'userUpdateStory/:id',
         element: <UserUpdateStory></UserUpdateStory>
       },
-       {
+      {
         path: 'user/stats',
         element: <StatsDashboard></StatsDashboard>
       },
@@ -192,5 +193,9 @@ export const router = createBrowserRouter([
 
 
     ]
-  }
+  },
+  {
+    path: '/*',
+    element: <ErrorPage></ErrorPage>
+  },
 ]);
