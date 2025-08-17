@@ -4,21 +4,26 @@ import { Outlet } from 'react-router';
 import Footer from '../Shared/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTheme from '../ThemeProvider/ThemeHook';
+
 
 const RootLayout = () => {
+    const { isDarkMode } = useTheme();
+    
     return (
-        <div >
-            <div className='max-w-full mx-auto'>
-
-                <Navbar></Navbar>
+        <div className={`min-h-screen ${isDarkMode ? 'dark bg-gray-900' : 'bg-white'}`}>
+            <div className='max-w-full mx-auto transition-colors duration-300'>
+                <Navbar />
                 <div className='pt-24 max-w-[1280px] mx-auto'>
-
-                    <Outlet></Outlet>
+                    <Outlet />
                 </div>
             </div>
-            <Footer></Footer>
-            <ToastContainer position="top-right" autoClose={3000} />
-
+            <Footer />
+            <ToastContainer 
+                position="top-right" 
+                autoClose={3000}
+                theme={isDarkMode ? 'dark' : 'light'}
+            />
         </div>
     );
 };

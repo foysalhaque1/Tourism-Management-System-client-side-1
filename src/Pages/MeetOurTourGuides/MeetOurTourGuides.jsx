@@ -3,11 +3,13 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useNavigate } from 'react-router';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 
 const MeetOurTourGuides = () => {
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
+     const { isDarkMode } = useTheme()
 
     const { data: guides = [], isLoading, isError } = useQuery({
         queryKey: ['randomTourGuides'],
@@ -21,11 +23,11 @@ const MeetOurTourGuides = () => {
     if (isError) return <p className="text-center text-red-500">Failed to load tour guides.</p>;
 
     return (
-        <div className="p-6">
+        <div className={`p-6 ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
             <h2 className="text-3xl font-bold text-center mb-6">Meet Our Tour Guides</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {guides.map((guide) => (
-                    <div key={guide._id} className="card bg-base-100 shadow-xl">
+                    <div key={guide._id} className="card  shadow-xl">
                         <figure>
                             <img
                                 src={guide.photo || '/default-guide.jpg'}

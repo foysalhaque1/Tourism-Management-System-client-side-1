@@ -5,6 +5,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useParams } from 'react-router';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 
@@ -13,6 +14,7 @@ const Payment = () => {
     const axiosSecure = useAxiosSecure();
     const [clientSecret, setClientSecret] = useState('');
     const [bookingData, setBookingData] = useState(null);
+      const { isDarkMode } = useTheme()
 
     useEffect(() => {
         const fetchPaymentIntent = async () => {
@@ -28,7 +30,7 @@ const Payment = () => {
     const options = { clientSecret, appearance };
 
     return (
-        <div className="p-6 max-w-xl mx-auto">
+        <div className={`p-6 max-w-xl mx-auto ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
             <h2 className="text-2xl font-bold mb-4">Complete Your Payment</h2>
             {clientSecret && bookingData && (
                 <Elements options={options} stripe={stripePromise}>

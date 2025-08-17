@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 const travelDestinations = [
     {
@@ -25,10 +26,11 @@ const travelDestinations = [
 ];
 
 const HeroSection1 = () => {
+   const { isDarkMode } = useTheme()
     return (
          <div>
       {/* Hero Section - No Background Image */}
-      <section className="relative h-[90vh] flex items-center justify-center bg-gradient-to-br from-yellow-100 to-white">
+      <section className={`relative h-[90vh] flex items-center justify-center ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
         <motion.div
           className="text-center px-6"
           initial={{ opacity: 0, y: -50 }}
@@ -36,7 +38,7 @@ const HeroSection1 = () => {
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-gray-800 mb-6"
+            className="text-4xl md:text-6xl font-bold  mb-6"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
@@ -45,7 +47,7 @@ const HeroSection1 = () => {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-2xl text-gray-600 max-w-2xl mx-auto mb-8"
+            className="text-lg md:text-2xl  max-w-2xl mx-auto mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 1 }}
@@ -66,8 +68,8 @@ const HeroSection1 = () => {
       </section>
 
       {/* Travel Destination Cards Section */}
-      <section className="bg-white py-16 px-6 md:px-20">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+      <section className={`py-16 px-6 md:px-20 ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 ">
           Popular Travel Destinations
         </h2>
 

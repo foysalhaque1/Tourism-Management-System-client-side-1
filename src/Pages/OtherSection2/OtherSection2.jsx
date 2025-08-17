@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 const WhyTravelWithUs = () => {
+   const { isDarkMode } = useTheme()
   return (
-    <section className="bg-gray-50 py-20 px-6 md:px-20">
+    <section className={`py-20 px-6 md:px-20 ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
         
         {/* Image */}
@@ -29,14 +31,14 @@ const WhyTravelWithUs = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Why Travel With Us?
           </h2>
-          <p className="text-gray-600 mb-6 text-lg">
+          <p className=" mb-6 text-lg">
             We make travel simple, enriching, and unforgettable by offering personalized experiences, local expertise, and complete support at every step.
           </p>
 
-          <ul className="space-y-4 text-gray-700 font-medium">
+          <ul className="space-y-4 font-medium">
             <li className="flex items-start gap-3">
               ✅ 100% Verified Guides & Packages
             </li>

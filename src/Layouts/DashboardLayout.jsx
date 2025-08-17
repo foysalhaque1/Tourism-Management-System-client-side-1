@@ -4,18 +4,22 @@ import { NavLink, Outlet } from 'react-router';
 import TourLogo from '../Shared/TourLogo/TourLogo';
 import useAuth from '../Hooks/useAuth';
 import Footer from '../Shared/Footer/Footer';
+import Navbar from '../Shared/Navbar/Navbar';
+import useTheme from '../ThemeProvider/ThemeHook';
 
 const DashboardLayout = () => {
     const { user } = useAuth();
+    const {isDarkMode} = useTheme()
     return (
         <div>
+            <Navbar></Navbar>
 
-            <div className="drawer lg:drawer-open">
+            <div className={`drawer lg:drawer-open mt-20 ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
 
                     {/* Navbar */}
-                    <div className="navbar bg-base-300 w-full lg:hidden">
+                    <div className="navbar  w-full lg:hidden">
                         <div className="flex-none ">
                             <label htmlFor="my-drawer-2" aria-label="open sidebar" className="btn btn-square btn-ghost">
                                 <svg
@@ -45,7 +49,7 @@ const DashboardLayout = () => {
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                         {/* Sidebar content here */}
-                        <TourLogo></TourLogo>
+                      
                         <div className='Tourist'>
 
                             <li><a className='text-2xl font-bold'>User</a></li>

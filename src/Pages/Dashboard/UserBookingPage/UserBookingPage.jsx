@@ -5,12 +5,14 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import Confetti from 'react-confetti';
+import useTheme from '../../../ThemeProvider/ThemeHook';
 
 const UserBookingPage = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const queryClient = useQueryClient();
     const navigate = useNavigate();
+     const { isDarkMode } = useTheme()
 
     const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['userBookings', user?.email],
@@ -65,16 +67,16 @@ const UserBookingPage = () => {
 
             {bookings.length > 3 && (
                 <div className="congratulations-message animate__animated animate__fadeIn">
-                    <h3 className="text-xl font-semibold text-center text-green-500">
+                    <h3 className="text-xl font-semibold text-center ">
                         Congratulations! 🎉 You've made over 3 bookings!
                     </h3>
                 </div>
             )}
 
-            <div className="overflow-x-auto">
+            <div className={`overflow-x-auto ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
                 <table className="table">
                     <thead>
-                        <tr>
+                        <tr className={`${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
                             <th>Package</th>
                             <th>Tour Guide</th>
                             <th>Date</th>

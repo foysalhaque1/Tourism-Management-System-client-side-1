@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp, FaUser, FaLock, FaMoneyBillWave, FaShare, FaStar, FaBook } from 'react-icons/fa';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 const Faq = () => {
     const [activeIndex, setActiveIndex] = useState(null);
+     const { isDarkMode } = useTheme()
 
     const toggleAccordion = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
@@ -47,16 +49,16 @@ const Faq = () => {
     ];
 
     return (
-        <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-white">
+        <section className={`py-16 px-4 ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'} `}>
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold text-center text-primary mb-2">Frequently Asked Questions</h2>
-                <p className="text-center text-gray-600 mb-12">Everything you need to know about our travel services</p>
+                <p className="text-center  mb-12">Everything you need to know about our travel services</p>
                 
                 <div className="space-y-4">
                     {faqs.map((faq, index) => (
                         <div 
                             key={index} 
-                            className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-200"
+                            className=" rounded-xl shadow-md overflow-hidden transition-all duration-200"
                         >
                             <button
                                 className={`flex items-center justify-between w-full p-6 text-left ${activeIndex === index ? 'bg-blue-50' : ''}`}
@@ -64,7 +66,7 @@ const Faq = () => {
                             >
                                 <div className="flex items-center">
                                     {faq.icon}
-                                    <span className="font-semibold text-gray-800">{faq.question}</span>
+                                    <span className="font-semibold ">{faq.question}</span>
                                 </div>
                                 {activeIndex === index ? (
                                     <FaChevronUp className="text-blue-500" />
@@ -76,7 +78,7 @@ const Faq = () => {
                             <div 
                                 className={`px-6 pb-6 pt-0 transition-all duration-300 ${activeIndex === index ? 'block' : 'hidden'}`}
                             >
-                                <p className="text-gray-600 pl-9">{faq.answer}</p>
+                                <p className="pl-9">{faq.answer}</p>
                             </div>
                         </div>
                     ))}

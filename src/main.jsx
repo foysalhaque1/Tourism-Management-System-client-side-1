@@ -9,7 +9,8 @@ import {
 import { router } from './Router/Router.jsx';
 import AuthProvider from './Context/AuthContext/AuthProvider.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider } from './ThemeProvider/ThemeContext.jsx';
+import ThemeProvider from './ThemeProvider/ThemeProvider.jsx';
+
 
 const queryClient = new QueryClient()
 createRoot(document.getElementById('root')).render(

@@ -1,6 +1,8 @@
 import React from 'react';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 const TouristTestimonials = () => {
+     const { isDarkMode } = useTheme()
     // Static testimonial data
     const testimonials = [
         {
@@ -45,21 +47,21 @@ const TouristTestimonials = () => {
     };
 
     return (
-        <section className="py-12 px-4 bg-gradient-to-br from-white to-blue-50">
+        <section className={`py-12 px-4 ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
             <h2 className="text-3xl font-bold text-center text-primary mb-6">Traveler Testimonials</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {testimonials.map((testimonial) => (
                     <div
                         key={testimonial.id}
-                        className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
+                        className=" p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
                     >
                         {renderStars(testimonial.rating)}
-                        <blockquote className="text-gray-600 italic mb-4 flex-grow">
+                        <blockquote className=" italic mb-4 flex-grow">
                             "{testimonial.quote}"
                         </blockquote>
                         <div className="mt-auto">
                             <p className="font-semibold text-primary">{testimonial.author}</p>
-                            <p className="text-sm text-gray-500">{testimonial.location}</p>
+                            <p className="text-sm ">{testimonial.location}</p>
                         </div>
                     </div>
                 ))}

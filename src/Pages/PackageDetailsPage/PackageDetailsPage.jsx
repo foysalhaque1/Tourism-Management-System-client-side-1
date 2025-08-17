@@ -9,10 +9,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from '../../Hooks/useAuth';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 const PackageDetailsPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+     const { isDarkMode } = useTheme()
 
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
@@ -89,7 +91,7 @@ const PackageDetailsPage = () => {
     };
 
     return (
-        <div className="p-6">
+        <div className={`p-6 ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
             {/* Gallery */}
             <div className="mb-6">
                 <h2 className="text-2xl font-bold mb-4">Gallery</h2>
@@ -132,7 +134,7 @@ const PackageDetailsPage = () => {
                     {guides?.map((guide) => (
                         <div
                             key={guide._id}
-                            className="card w-full bg-base-100 shadow-xl cursor-pointer"
+                            className="card w-full  shadow-xl cursor-pointer"
                             onClick={() => navigate(`/tourGuide/${guide._id}`)}
                         >
 

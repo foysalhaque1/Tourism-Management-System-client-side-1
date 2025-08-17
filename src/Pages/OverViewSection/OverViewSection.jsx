@@ -1,9 +1,11 @@
 import React from 'react';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 const OverviewSection = () => {
+     const { isDarkMode } = useTheme()
     return (
-        <section className="px-4 md:px-16 py-12 bg-gray-50 text-gray-800">
-            <div className="max-w-6xl mx-auto">
+        <section className={`px-4 md:px-16 py-12  ${isDarkMode ? 'bg-gray-800 text-blue-600' : 'bg-gray-100 text-black'}`}>
+            <div className="max-w-[1280px] mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
                     Welcome to Explore Tour
                 </h2>

@@ -2,10 +2,12 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 const OurPackages = () => {
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
+     const { isDarkMode } = useTheme()
 
     const { data: packages = [], isLoading, isError } = useQuery({
         queryKey: ['tourPackages'],
@@ -22,9 +24,9 @@ const OurPackages = () => {
     const randomPackages = shuffled.slice(0, 3);
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 ">
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-[1280px] ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
             {randomPackages.map((pkg, index) => (
-                <div key={index} className="card w-full bg-base-100 shadow-xl">
+                <div key={index} className="card w-full shadow-xl">
                     {/* Display first image from links */}
                     {pkg.photos?.length > 0 && (
                         <figure>
@@ -39,8 +41,8 @@ const OurPackages = () => {
 
                     <div className="card-body">
                         <h2 className="card-title capitalize">{pkg.tourType}</h2>
-                        <p className="text-lg font-semibold text-primary">${pkg.price}</p>
-                        <p className="text-lg font-semibold text-primary">{pkg.info?.length > 100 ? `${pkg.info.substring(0, 50)}...` : pkg.info}</p>
+                        <p className="text-lg font-semibold">${pkg.price}</p>
+                        <p className="text-lg font-semibold">{pkg.info?.length > 100 ? `${pkg.info.substring(0, 50)}...` : pkg.info}</p>
                         <div className="card-actions justify-end">
                             <button
                                 className="btn btn-outline btn-primary"

@@ -5,6 +5,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useNavigate } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 
 const CheckoutForm = ({ bookingData, clientSecret }) => {
@@ -14,7 +15,8 @@ const CheckoutForm = ({ bookingData, clientSecret }) => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const [processing, setProcessing] = useState(false);
-    const { user } = useAuth()
+    const { user } = useAuth();
+      const { isDarkMode } = useTheme()
     console.log(clientSecret)
 
     const handleSubmit = async (e) => {
@@ -75,7 +77,7 @@ const CheckoutForm = ({ bookingData, clientSecret }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className={`space-y-4 ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
             <CardElement className="p-4 border rounded" />
             {error && <p className="text-red-500">{error}</p>}
             <button

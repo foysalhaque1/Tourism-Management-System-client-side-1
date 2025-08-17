@@ -1,8 +1,10 @@
 import React from 'react';
 import { FaCalendarAlt, FaMapMarkerAlt, FaRegClock } from 'react-icons/fa';
+import useTheme from '../../ThemeProvider/ThemeHook';
 
 const Offers = () => {
   // Static seasonal offers data
+   const { isDarkMode } = useTheme()
   const seasonalOffers = [
     {
       id: 1,
@@ -40,7 +42,7 @@ const Offers = () => {
   ];
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-br from-white to-blue-50">
+    <section className={`py-12 px-4 ${isDarkMode ? 'bg-gray-800 text-blue-500' : 'bg-gray-100 text-black'}`}>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-primary mb-2">Seasonal Travel Packages</h2>
         <p className="text-center text-gray-600 mb-8">Discover our exclusive seasonal offers</p>
@@ -49,7 +51,7 @@ const Offers = () => {
           {seasonalOffers.map((offer) => (
             <div 
               key={offer.id} 
-              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100"
+              className=" rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100"
             >
               {/* Offer Tag */}
               <div className="bg-primary text-white text-sm font-bold py-1 px-4 text-center">
@@ -58,16 +60,16 @@ const Offers = () => {
               
               <div className="p-5">
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-gray-800">{offer.title}</h3>
+                  <h3 className="text-xl font-semibold ">{offer.title}</h3>
                   <span className="bg-blue-100 text-primary text-xs font-bold py-1 px-2 rounded">
                     {offer.season}
                   </span>
                 </div>
                 
-                <p className="text-gray-600 mb-4">{offer.description}</p>
+                <p className=" mb-4">{offer.description}</p>
                 
                 <div className="mb-4 space-y-2">
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm ">
                     <FaMapMarkerAlt className="mr-2 text-primary" />
                     <span>{offer.destinations.join(", ")}</span>
                   </div>
@@ -79,7 +81,7 @@ const Offers = () => {
                 
                 <div className="flex items-end mb-4">
                   <span className="text-2xl font-bold text-primary mr-2">{offer.price}</span>
-                  <span className="text-sm text-gray-500 line-through">{offer.originalPrice}</span>
+                  <span className="text-sm  line-through">{offer.originalPrice}</span>
                 </div>
                 
                 <div className="flex justify-between items-center text-sm border-t border-gray-100 pt-4">
