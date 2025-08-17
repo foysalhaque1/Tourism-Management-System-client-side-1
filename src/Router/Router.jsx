@@ -31,6 +31,7 @@ import CommunityPage from "../Pages/CommunityPage/CommunityPage";
 import AllTripsPage from "../Pages/AllTripsPage/AllTripsPage";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import UserAddStories from "../Pages/UserAddStories/UserAddStories";
+import StatsDashboard from "../Pages/OverviewPage/OverviewPage";
 
 
 
@@ -117,6 +118,10 @@ export const router = createBrowserRouter([
        {
         path: 'userUpdateStory/:id',
         element: <UserUpdateStory></UserUpdateStory>
+      },
+       {
+        path: 'user/stats',
+        element: <StatsDashboard></StatsDashboard>
       },
 
       {
